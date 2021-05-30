@@ -4,7 +4,7 @@ import { Button, Text, View } from "react-native"
 
 // const Tab = createBottomTabNavigator()
 
-export default function ChatScreen() {
+export default function Chat() {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Chat</Text>

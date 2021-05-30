@@ -1,28 +1,33 @@
-import React from "react"
+import React, { useState } from "react"
 import "react-native-gesture-handler"
 import { NavigationContainer } from "@react-navigation/native"
 import { createStackNavigator } from "@react-navigation/stack"
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { userScreens, authScreens } from "./src/routes/route"
 
 const Stack = createStackNavigator()
-const Tab = createBottomTabNavigator()
 
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: "#f4511e",
+            backgroundColor: "#26CABF",
           },
-          headerTintColor: "black",
+          headerTitleAlign: "center",
+          headerTintColor: "white",
         }}>
         {Object.entries({
-          ...userScreens,
-          // ...(isLoggedIn ? userScreens : authScreens),
+          ...(isLoggedIn ? userScreens : authScreens),
         }).map(([name, component]) => (
-          <Stack.Screen key={name} name={name} component={component} />
+          <Stack.Screen
+            key={name}
+            name={name}
+            component={component}
+            // animationTypeForReplace={"pop"} or push
+          />
         ))}
 
         {/* <Stack.Screen

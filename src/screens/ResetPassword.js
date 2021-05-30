@@ -1,11 +1,11 @@
 import React from "react"
 import { Button, Text, View } from "react-native"
 
-export default function Login({ navigation }) {
+export default function ResetPassword({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Log In?</Text>
-      <Button title="Signup" onPress={() => navigation.replace("Signup")} />
+      <Text>Reset Password</Text>
+      <Button title="Login" onPress={() => navigation.replace("Login")} />
     </View>
   )
 }

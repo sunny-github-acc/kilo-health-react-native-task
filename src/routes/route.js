@@ -1,14 +1,18 @@
-import ChatScreen from "../screens/Chat"
-import LoginScreen from "../screens/Login"
-import ProfileScreen from "../screens/Profile"
-import SignUpScreen from "../screens/SignUp"
+import Welcome from "../screens/Welcome"
+import Chat from "../screens/Chat"
+import Login from "../screens/Login"
+import Profile from "../screens/Profile"
+import ResetPassword from "../screens/ResetPassword"
+import Signup from "../screens/Signup"
 
 export const userScreens = {
-  Chat: ChatScreen,
-  Profile: ProfileScreen,
+  Chat,
+  Profile,
 }
 
 export const authScreens = {
-  Login: LoginScreen,
-  SignUp: SignUpScreen,
+  Welcome,
+  Login,
+  Signup,
+  ResetPassword,
 }
