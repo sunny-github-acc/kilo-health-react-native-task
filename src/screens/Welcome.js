@@ -1,11 +1,11 @@
 import React from "react"
 import { StyleSheet, Image, View } from "react-native"
 import CustomButton from "../shared/button"
-import { globalStyles } from "../styles/global"
+import { globalStyles } from "../styles/globalStyles"
 
 export default function Welcome({ navigation }) {
   return (
-    <View style={globalStyles.centered}>
+    <View style={[globalStyles.centered, globalStyles.secondaryBackground]}>
       <View style={styles.imageContainer}>
         <Image style={styles.logo} source={require("../images/logo.png")} />
       </View>
@@ -15,8 +15,8 @@ export default function Welcome({ navigation }) {
       />
       <CustomButton
         customStyles={[
-          globalStyles.secondaryButton,
-          globalStyles.secondaryButtonText,
+          globalStyles.secondaryBackground,
+          globalStyles.primaryColor,
         ]}
         text="login"
         onPress={() => navigation.navigate("Login")}
