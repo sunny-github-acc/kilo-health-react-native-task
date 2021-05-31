@@ -12,12 +12,18 @@ import CustomButton from "../shared/button"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { globalStyles } from "../styles/globalStyles"
 import AppContext from "../global/context"
+import { useEffect } from "react"
 
 export default function Signup({ navigation }) {
   const myContext = useContext(AppContext)
   const [isPhone, setIsPhone] = useState(true)
   const [phone, setPhone] = useState("")
   const [email, setEmail] = useState("")
+  const [isInfoEmpty, setIsInfoEmpty] = useState(true)
+
+  useEffect(() => {
+    phone === "" && email === "" ? setIsInfoEmpty(true) : setIsInfoEmpty(false)
+  })
 
   return (
     <TouchableWithoutFeedback
@@ -48,7 +54,8 @@ export default function Signup({ navigation }) {
               EMAIL
             </Text>
           </TouchableOpacity>
-          {isPhone && (
+
+          {isPhone ? (
             <>
               <View style={styles.inputContainer}>
                 <Text style={[styles.inputTextLeft, styles.inputText]}>
@@ -74,16 +81,18 @@ export default function Signup({ navigation }) {
               </View>
               <CustomButton
                 text="next"
-                onPress={() => myContext.handleIsLoggedIn(true)}
+                onPress={
+                  !isInfoEmpty ? () => myContext.handleIsLoggedIn(true) : null
+                }
+                isDisabled={isInfoEmpty}
               />
             </>
-          )}
-          {!isPhone && (
+          ) : (
             <>
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
-                  onChangeText={email.length < 320 ? e => setEmail(e) : null}
+                  onChangeText={e => setEmail(e.substring(0, 320))}
                   value={email}
                   placeholder="Email"
                   autoFocus
@@ -100,7 +109,10 @@ export default function Signup({ navigation }) {
               </View>
               <CustomButton
                 text="next"
-                onPress={() => myContext.handleIsLoggedIn(true)}
+                onPress={
+                  !isInfoEmpty ? () => myContext.handleIsLoggedIn(true) : null
+                }
+                isDisabled={isInfoEmpty}
               />
             </>
           )}
@@ -123,7 +135,7 @@ export const styles = StyleSheet.create({
     padding: 20,
     marginBottom: 0,
   },
-  iconContainer: { flex: 1, justifyContent: "flex-end" },
+  iconContainer: { flex: 1, justifyContent: "center" },
   main: { flex: 2 },
   divider: {
     flexDirection: "row",
@@ -143,7 +155,7 @@ export const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: "ghostwhite",
-    margin: 18,
+    marginVertical: 18,
     padding: 5,
     paddingHorizontal: 15,
     flexDirection: "row",
@@ -159,7 +171,12 @@ export const styles = StyleSheet.create({
     borderRightColor: "gainsboro",
     borderRightWidth: 2,
   },
-  input: { fontSize: 20, paddingLeft: 10, flex: 1 },
+  input: {
+    fontSize: 20,
+    paddingLeft: 10,
+    flex: 1,
+    fontFamily: "roboto-regular",
+  },
   misc: {
     color: "darkgrey",
     marginBottom: 15,

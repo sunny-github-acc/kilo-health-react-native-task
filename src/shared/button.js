@@ -3,15 +3,24 @@ import { StyleSheet, TouchableOpacity, Text, View } from "react-native"
 import { globalStyles } from "../styles/globalStyles"
 import LinearGradient from "react-native-linear-gradient"
 
-export default function CustomButton({ text, onPress, customStyles }) {
+export default function CustomButton({
+  isDisabled,
+  text,
+  onPress,
+  customStyles,
+}) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity disabled={isDisabled} onPress={onPress}>
       <LinearGradient
         style={customStyles}
-        colors={[
-          globalStyles.primaryColor.color,
-          globalStyles.primaryColorLighten.color,
-        ]}
+        colors={
+          isDisabled
+            ? ["silver", "gainsboro"]
+            : [
+                globalStyles.primaryColor.color,
+                globalStyles.primaryColorLighten.color,
+              ]
+        }
         useAngle={true}
         angle={220}
         angleCenter={{ x: 0.2, y: 0.5 }}>

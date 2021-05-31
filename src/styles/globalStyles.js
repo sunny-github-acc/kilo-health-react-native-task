@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native"
 
 const primaryColor = "#26CABF"
 const primaryColorLighten = "#4CEDE2"
-const secondaryColor = "#F2F8F7"
+const secondaryColor = "#E7F6F3"
 
 export const globalStyles = StyleSheet.create({
   primaryColor: {
