@@ -74,7 +74,7 @@ export default function Signup({ navigation }) {
                 </Text>
               </View>
               <View>
-                <Text style={styles.misc}>
+                <Text style={styles.inputHelp}>
                   You may receive SMS updates from Kilo and can opt out at any
                   time.
                 </Text>
@@ -102,7 +102,7 @@ export default function Signup({ navigation }) {
                 </Text>
               </View>
               <View>
-                <Text style={styles.misc}>
+                <Text style={styles.inputHelp}>
                   You may receive SMS updates from Kilo and can opt out at any
                   time.
                 </Text>
@@ -118,9 +118,9 @@ export default function Signup({ navigation }) {
           )}
         </View>
         <View style={styles.footerContainer}>
-          <Text style={styles.footerText}>Already have an account? </Text>
+          <Text style={styles.colorGrey}>Already have an account? </Text>
           <Text
-            style={styles.footerTextLink}
+            style={styles.textLink}
             onPress={() => navigation.replace("Login")}>
             Log in.
           </Text>
@@ -177,7 +177,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     fontFamily: "roboto-regular",
   },
-  misc: {
+  inputHelp: {
     color: "darkgrey",
     marginBottom: 15,
     marginHorizontal: 18,
@@ -194,8 +194,8 @@ export const styles = StyleSheet.create({
     bottom: 0,
     padding: 10,
   },
-  footerText: {
+  colorGrey: {
     color: "darkgrey",
   },
-  footerTextLink: { fontWeight: "bold", color: "grey" },
+  textLink: { fontWeight: "bold", color: "grey" },
 })

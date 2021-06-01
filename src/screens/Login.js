@@ -35,6 +35,7 @@ export default function Signup({ navigation }) {
       style: { fontFamily: "roboto-regular" },
     })
   })
+
   return (
     <TouchableWithoutFeedback
       accessible={false}
@@ -87,19 +88,44 @@ export default function Signup({ navigation }) {
             }
             isDisabled={isInfoEmpty}
           />
-          <View>
-            <Text style={styles.misc}>Forgot your login details?</Text>
+          <View style={styles.inputHelp}>
+            <Text style={styles.colorGrey}>Forgot your login details? </Text>
             <Text
-              style={styles.footerTextLink}
+              style={styles.textLink}
               onPress={() => navigation.replace("ResetPassword")}>
               Get help logging in.
+            </Text>
+          </View>
+          <View style={styles.inputHelp}>
+            <Text
+              style={[
+                styles.colorGrey,
+                globalStyles.secondaryBackground,
+                styles.borderMiddleText,
+              ]}>
+              OR
+            </Text>
+          </View>
+          <View style={styles.borderMiddle}></View>
+          <View style={[styles.inputHelp, styles.inputHelpIcon]}>
+            <MaterialCommunityIcons
+              onPress={() => navigation.replace("ResetPassword")}
+              size={35}
+              color="#26CABF"
+              name="github"
+            />
+            <Text
+              onPress={() => navigation.replace("ResetPassword")}
+              style={[globalStyles.primaryColor]}>
+              {" "}
+              Log in with Github
             </Text>
           </View>
         </View>
         <View style={styles.footerContainer}>
           <Text style={styles.footerText}>Don't have an account? </Text>
           <Text
-            style={styles.footerTextLink}
+            style={styles.textLink}
             onPress={() => navigation.replace("Signup")}>
             Sign up.
           </Text>
@@ -135,13 +161,21 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
   },
   input: { flex: 1, fontSize: 20, fontFamily: "roboto-regular" },
-  inputPassword: {},
-  inputContainerIcon: {},
-  misc: {
+  inputHelp: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 15,
+  },
+  inputHelpIcon: { alignItems: "center" },
+  colorGrey: {
     color: "darkgrey",
-    marginBottom: 15,
-    marginHorizontal: 18,
-    textAlign: "center",
+  },
+  borderMiddleText: { lineHeight: 20, paddingHorizontal: 5, zIndex: 1 },
+  borderMiddle: {
+    borderBottomColor: "lightgrey",
+    borderBottomWidth: 1,
+    position: "relative",
+    bottom: 10,
   },
   footerContainer: {
     ...globalStyles.centered,
@@ -157,5 +191,5 @@ export const styles = StyleSheet.create({
   footerText: {
     color: "darkgrey",
   },
-  footerTextLink: { fontWeight: "bold", color: "grey" },
+  textLink: { fontWeight: "bold", color: "grey" },
 })
