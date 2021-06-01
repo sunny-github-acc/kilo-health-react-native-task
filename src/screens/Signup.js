@@ -63,10 +63,14 @@ export default function Signup({ navigation }) {
                 </Text>
                 <TextInput
                   style={styles.input}
-                  onChangeText={e => setPhone(e.substring(0, 8))}
+                  onChangeText={e => setPhone(e)}
                   value={phone}
+                  maxLength={8}
                   placeholder="Phone"
                   keyboardType="numeric"
+                  onSubmitEditing={
+                    !isInfoEmpty ? () => myContext.handleIsLoggedIn(true) : null
+                  }
                   autoFocus
                 />
                 <Text onPress={e => setPhone("")} style={styles.inputText}>
@@ -92,8 +96,12 @@ export default function Signup({ navigation }) {
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
-                  onChangeText={e => setEmail(e.substring(0, 320))}
+                  onChangeText={e => setEmail(e)}
+                  maxLength={320}
                   value={email}
+                  onSubmitEditing={
+                    !isInfoEmpty ? () => myContext.handleIsLoggedIn(true) : null
+                  }
                   placeholder="Email"
                   autoFocus
                 />

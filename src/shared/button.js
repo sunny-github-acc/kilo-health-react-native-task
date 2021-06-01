@@ -2,12 +2,14 @@ import React from "react"
 import { StyleSheet, TouchableOpacity, Text, View } from "react-native"
 import { globalStyles } from "../styles/globalStyles"
 import LinearGradient from "react-native-linear-gradient"
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 
 export default function CustomButton({
   isDisabled,
   text,
   onPress,
   customStyles,
+  icon,
 }) {
   return (
     <TouchableOpacity disabled={isDisabled} onPress={onPress}>
@@ -25,7 +27,16 @@ export default function CustomButton({
         angle={220}
         angleCenter={{ x: 0.2, y: 0.5 }}>
         <View style={[styles.button, customStyles]}>
-          <Text style={[styles.buttonText, customStyles]}>{text}</Text>
+          {icon && (
+            <MaterialCommunityIcons
+              name={icon.name}
+              size={icon.size}
+              color={icon.color}
+            />
+          )}
+          {text && (
+            <Text style={[styles.buttonText, customStyles]}>{text}</Text>
+          )}
         </View>
       </LinearGradient>
     </TouchableOpacity>

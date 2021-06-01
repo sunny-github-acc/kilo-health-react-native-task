@@ -12,10 +12,18 @@ export const globalStyles = StyleSheet.create({
     color: primaryColorLighten,
   },
   primaryBackground: {
-    backgroundColor: "#26CABF",
+    backgroundColor: primaryColor,
   },
   secondaryColor: { color: secondaryColor },
   secondaryBackground: { backgroundColor: secondaryColor },
   backgroundTransparent: { backgroundColor: "transparent" },
   centered: { flex: 1, alignItems: "center", justifyContent: "center" },
 })
+
+export const header = () => {
+  return {
+    headerStyle: primaryColor,
+    headerTitleAlign: "center",
+    headerTintColor: "white",
+  }
+}

@@ -24,6 +24,10 @@ export default function Signup({ navigation }) {
   const inputRef = useRef(null)
   const [isInfoEmpty, setIsInfoEmpty] = useState(true)
 
+  const hadnlePasswordFocus = () => {
+    inputRef.current.focus()
+  }
+
   useEffect(() => {
     userLogin === "" || password === "" || password.length < 6
       ? setIsInfoEmpty(true)
@@ -48,9 +52,15 @@ export default function Signup({ navigation }) {
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.input}
-              onChangeText={e => setUserLogin(e.substring(0, 255))}
+              onChangeText={e => setUserLogin(e)}
               value={userLogin}
+              maxLength={255}
               placeholder="Phone number, email or username"
+              onSubmitEditing={
+                !isInfoEmpty
+                  ? () => myContext.handleIsLoggedIn(true)
+                  : hadnlePasswordFocus
+              }
               autoFocus
             />
           </View>
@@ -61,6 +71,11 @@ export default function Signup({ navigation }) {
               value={password}
               placeholder="Password"
               secureTextEntry={!showPassword}
+              onSubmitEditing={
+                !isInfoEmpty
+                  ? () => myContext.handleIsLoggedIn(true)
+                  : hadnlePasswordFocus
+              }
               ref={inputRef}
             />
             <View styles={styles.inputContainerIcon}>
