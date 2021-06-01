@@ -1,9 +1,9 @@
 import React, { useContext } from "react"
-import { Button, FlatList, Text, View } from "react-native"
-import ListItem from "../components/ListItem"
+import { FlatList, View } from "react-native"
+import ListItem from "../components/FriendItem"
 import AppContext from "../global/context"
 
-export default function Profile() {
+export default function Profile({ navigation }) {
   const myContext = useContext(AppContext)
 
   return (
@@ -11,18 +11,7 @@ export default function Profile() {
       <FlatList
         data={myContext.friends}
         renderItem={({ item }) => (
-          <ListItem
-            item={item}
-            key={item.id}
-            // deleteItem={deleteFriend}
-            // editItem={editFriend}
-            // isEditing={editStatus}
-            // saveEditItem={saveEditFriend}
-            // editItemDetail={editItemDetail}
-            // handleEditChange={handleEditChange}
-            // itemChecked={itemChecked}
-            // checkedItems={checkedItems}
-          />
+          <ListItem item={item} key={item.id} navigation={navigation} />
         )}
       />
     </View>

@@ -14,10 +14,5 @@ export default function Profile() {
         onPress={() => myContext.handleIsLoggedIn(false)}
       />
     </View>
-
-    // <Tab.Navigator>
-    //   <Tab.Screen name="Feed" component={Feed} />
-    //   <Tab.Screen name="Messages" component={Messages} />
-    // </Tab.Navigator>
   )
 }

@@ -1,17 +1,19 @@
 import React from "react"
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs"
 import { createStackNavigator } from "@react-navigation/stack"
-import Chat from "../screens/Chats"
+import Chats from "../screens/Chats"
 import Profile from "../screens/Profile"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { globalStyles } from "../styles/globalStyles"
 import CustomButton from "../shared/button"
+import Chat from "../screens/Chat"
+import Header from "../shared/header"
 
 const Tab = createMaterialBottomTabNavigator()
 
 export default function MainTab() {
   const ProfileStack = createStackNavigator()
-  const ChatStack = createStackNavigator()
+  const ChatsStack = createStackNavigator()
 
   function ProfileStackScreen() {
     return (
@@ -26,7 +28,7 @@ export default function MainTab() {
     )
   }
 
-  function ChatStackScreen() {
+  function ChatsStackScreen() {
     const icon = {
       name: "chat-plus-outline",
       color: "white",
@@ -34,14 +36,14 @@ export default function MainTab() {
     }
 
     return (
-      <ChatStack.Navigator
+      <ChatsStack.Navigator
         screenOptions={{
           headerStyle: globalStyles.primaryBackground,
           headerTintColor: "white",
         }}>
-        <ChatStack.Screen
+        <ChatsStack.Screen
           name="Chats"
-          component={Chat}
+          component={Chats}
           options={{
             headerTitle: "Friends",
             headerRight: () => (
@@ -56,7 +58,18 @@ export default function MainTab() {
             ),
           }}
         />
-      </ChatStack.Navigator>
+        <ChatsStack.Screen
+          name="Chat"
+          component={Chat}
+          options={({ navigation, route }) => {
+            return {
+              headerTitle: () => (
+                <Header navigation={navigation} route={route} />
+              ),
+            }
+          }}
+        />
+      </ChatsStack.Navigator>
     )
   }
 
@@ -91,7 +104,7 @@ export default function MainTab() {
       barStyle={{
         backgroundColor: globalStyles.primaryColorLighten.color,
       }}>
-      <Tab.Screen name="Chats" component={ChatStackScreen} />
+      <Tab.Screen name="Chats" component={ChatsStackScreen} />
       <Tab.Screen name="Profile" component={ProfileStackScreen} />
     </Tab.Navigator>
   )

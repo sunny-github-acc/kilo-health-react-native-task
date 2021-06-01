@@ -1,29 +1,19 @@
 import React from "react"
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Image,
-} from "react-native"
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { globalStyles } from "../styles/globalStyles"
 
-const ListItem = ({
-  item,
-
-  //   deleteItem,
-  //   editItem,
-  //   isEditing,
-  //   editItemDetail,
-  //   saveEditItem,
-  //   handleEditChange,
-  //   itemChecked,
-  //   checkedItems,
-}) => {
+const ListItem = ({ item, navigation }) => {
   return (
-    <TouchableOpacity style={styles.listItem}>
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() =>
+        navigation.push("Chat", {
+          id: item.id,
+          first: item.first,
+          last: item.last,
+        })
+      }>
       <View style={{ flexDirection: "row" }}>
         <Image source={{ uri: item.photo }} style={styles.photo} />
         <View style={{ paddingLeft: 10 }}>
@@ -52,28 +42,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-  },
-  listItemView: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  listItemText: {
-    fontSize: 18,
-  },
-  checkedItemText: {
-    fontSize: 18,
-    textDecorationLine: "line-through",
-    color: "green",
-  },
-  iconView: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    width: 70,
-  },
-  editItemInput: {
-    padding: 0,
-    fontSize: 18,
   },
   photo: { width: 40, height: 40, borderRadius: 50 },
 })
