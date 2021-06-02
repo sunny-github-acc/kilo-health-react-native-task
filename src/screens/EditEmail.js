@@ -36,6 +36,8 @@ export default function EditEmail({ navigation }) {
 export const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
+    width: "100%",
+    height: "100%",
   },
   input: {
     backgroundColor: "ghostwhite",
