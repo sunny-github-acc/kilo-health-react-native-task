@@ -12,6 +12,7 @@ const ListItem = ({ item, navigation }) => {
           id: item.id,
           first: item.first,
           last: item.last,
+          binId: item.binId,
         })
       }>
       <View style={{ flexDirection: "row" }}>

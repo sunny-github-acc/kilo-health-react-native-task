@@ -7,24 +7,27 @@ import AuthStack from "./src/navigation/AuthStack"
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
-  const [friends, setFriends] = useState([
+  const [friends] = useState([
     {
       id: 1,
       first: "Alice",
       last: "Cooper",
       photo: "https://randomuser.me/api/portraits/med/men/13.jpg",
+      binId: "60b6a97a2d9ed65a6a7c9a25",
     },
     {
       id: 2,
       first: "Johny",
       last: "Cage",
       photo: "https://randomuser.me/api/portraits/med/men/69.jpg",
+      binId: "60b6d854b104de5acddd217f",
     },
     {
       id: 3,
       first: "Taras",
       last: "Shevchenko",
       photo: "https://randomuser.me/api/portraits/med/men/42.jpg",
+      binId: "60b6d8ae2d9ed65a6a7cd1a4",
     },
   ])
   const [userInfo, setUserInfo] = useState({

@@ -14,7 +14,7 @@ import { API } from "../api/api"
 import Message from "../components/Message"
 
 export default function Chat({ route }) {
-  // const { id } = route.params
+  const { binId } = route.params
   const [message, setMessage] = useState("")
   const [conversation, setConversation] = useState()
   const [prevJSON, setPrevJSON] = useState()
@@ -27,7 +27,6 @@ export default function Chat({ route }) {
         let result = JSON.parse(req.responseText).record
         setConversation(Object.entries(result))
         setPrevJSON(JSON.stringify(result))
-        console.log("what i get", result)
       }
     }
 
@@ -47,25 +46,17 @@ export default function Chat({ route }) {
 
     req.onreadystatechange = () => {
       if (req.readyState == XMLHttpRequest.DONE) {
-        console.log(req.responseText)
-        handleGetConversation({ id: "60b6a97a2d9ed65a6a7c9a25" })
+        handleGetConversation({ id: binId })
       }
     }
-    req.open(
-      "PUT",
-      "https://api.jsonbin.io/v3/b/" + "60b6a97a2d9ed65a6a7c9a25",
-      true,
-    )
+    req.open("PUT", "https://api.jsonbin.io/v3/b/" + binId, true)
     req.setRequestHeader("Content-Type", "application/json")
     req.setRequestHeader("X-Master-Key", API)
     req.send(JSONText)
   }
 
   useEffect(() => {
-    if (!conversation) handleGetConversation({ id: "60b6a97a2d9ed65a6a7c9a25" })
-  })
-  useEffect(() => {
-    console.log(prevJSON)
+    if (!conversation) handleGetConversation({ id: binId })
   })
 
   return (
@@ -104,7 +95,6 @@ export const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
-    alignItems: "center",
     justifyContent: "flex-end",
     padding: 20,
   },
@@ -120,6 +110,7 @@ export const styles = StyleSheet.create({
   input: {
     padding: 10,
     paddingHorizontal: 25,
+    marginLeft: 10,
     borderRadius: 30,
     backgroundColor: "ghostwhite",
     flex: 1,

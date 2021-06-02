@@ -16,7 +16,6 @@ export default function Profile({ navigation }) {
       <View style={styles.container}>
         <View>
           <Text style={styles.textGrey}>PROFILE INFORMATION</Text>
-
           <TouchableOpacity
             style={styles.infoContainer}
             onPress={() => navigation.navigate("Edit Username")}>

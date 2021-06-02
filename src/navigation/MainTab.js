@@ -52,16 +52,16 @@ export default function MainTab() {
           component={Chats}
           options={{
             headerTitle: "Friends",
-            headerRight: () => (
-              <CustomButton
-                onPress={() => alert("This is a button!")}
-                icon={icon}
-                customStyles={[
-                  globalStyles.primaryBackground,
-                  { paddingRight: 10 },
-                ]}
-              />
-            ),
+            // headerRight: () => (
+            //   <CustomButton
+            //     onPress={() => alert("Currently una")}
+            //     icon={icon}
+            //     customStyles={[
+            //       globalStyles.primaryBackground,
+            //       { paddingRight: 10 },
+            //     ]}
+            //   />
+            // ),
           }}
         />
         <ChatsStack.Screen
