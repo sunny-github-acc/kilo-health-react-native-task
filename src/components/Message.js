@@ -10,15 +10,8 @@ const Message = ({ item, photo }) => {
       <View
         style={[
           styles.containerChild,
-          isUser ? styles.alignLeft : styles.alignRight,
+          !isUser ? styles.alignLeft : styles.alignRight,
         ]}>
-        <Text
-          style={[
-            styles.text,
-            isUser ? styles.textAlignRight : styles.textAlignLeft,
-          ]}>
-          {item[1]}
-        </Text>
         {!photo && isUser && (
           <MaterialCommunityIcons
             style={styles.icon}
@@ -30,6 +23,13 @@ const Message = ({ item, photo }) => {
         {photo && isUser && (
           <Image source={{ uri: photo }} style={styles.image} />
         )}
+        <Text
+          style={[
+            styles.text,
+            !isUser ? styles.textAlignRight : styles.textAlignLeft,
+          ]}>
+          {item[1]}
+        </Text>
       </View>
     </View>
   )
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     margin: 5,
+    width: "95%",
   },
   alignLeft: {
     justifyContent: "flex-end",

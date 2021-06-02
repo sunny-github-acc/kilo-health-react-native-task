@@ -113,7 +113,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 20,
   },
   inputContainer: {
-    margin: 10,
+    width: "95%",
     flexDirection: "row",
     alignItems: "center",
   },

@@ -3,6 +3,9 @@ import { createMaterialBottomTabNavigator } from "@react-navigation/material-bot
 import { createStackNavigator } from "@react-navigation/stack"
 import Chats from "../screens/Chats"
 import Profile from "../screens/Profile"
+import EditUsername from "../screens/EditUsername"
+import EditEmail from "../screens/EditEmail"
+import EditPhone from "../screens/EditPhone"
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
 import { globalStyles } from "../styles/globalStyles"
 import CustomButton from "../shared/button"
@@ -24,6 +27,9 @@ export default function MainTab() {
           headerTintColor: "white",
         }}>
         <ProfileStack.Screen name="Profile" component={Profile} />
+        <ProfileStack.Screen name="Edit Username" component={EditUsername} />
+        <ProfileStack.Screen name="Edit Email" component={EditEmail} />
+        <ProfileStack.Screen name="Edit Phone" component={EditPhone} />
       </ProfileStack.Navigator>
     )
   }
