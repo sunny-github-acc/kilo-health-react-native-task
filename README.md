@@ -11,5 +11,5 @@ This app is a mock chat written in React Native. Firstly the auth screen invites
 
 To run it you can type:
 
-### `npm android` 
+### `npm run android` 
  
